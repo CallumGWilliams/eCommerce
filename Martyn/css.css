@@ -1,0 +1,80 @@
+forall {
+    background-color: #EAE3D5;
+}
+
+body {
+    font-size: 28px;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+    position: -webkit-sticky; /* Safari */
+    position: sticky;
+    top: 0;
+}
+
+li {
+    float: left;
+}
+
+li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+li a:hover {
+    background-color: #003308;
+}
+
+.active {
+    background-color: #004E0E;
+}
+
+.header {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+}
+
+body {
+
+    background-color: #EAE3D5;
+    text-align:center;
+}
+
+.bigBox {
+
+    height: 50px;
+    font-size: 16pt;
+
+}
+
+#message{
+
+    height:125px;
+    width: 400px;
+    font-size: 16pt;
+}
+
+#submitMessage{
+
+    height: 50px;
+    width: 10%;
+    font-size: 18px;
+
+}
+
+.titleHeading {
+
+    font-size: 140%;
+
+}
+
