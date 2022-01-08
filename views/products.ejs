@@ -5,31 +5,32 @@
     <title>Products - Martyn's Fencing</title>
     <link rel="stylesheet" href="css/styles.css">
 
+    <script src="https://cdn.socket.io/4.4.1/socket.io.min.js" integrity="sha384-fKnu0iswBIqkjxrhQCTZ7qlLHOFEgNkRmK2vaO/LbTZSXdJfAu6ewRBdwHPhBo/H" crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="../App.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/pouchdb@7.2.1/dist/pouchdb.min.js"></script>
+    <script src="../js/index.js"></script>
+
     <link rel="shortcut icon" type="image/x-icon" href="img/favicon.ico">
 </head>
 <body>
+
 <div class="header">
     <p class="titleHeading">Martyn's Fencing Supplies and Installation</p>
 
+
+
     <ul class="nav">
-        <li><a class="active" href="app.ejs">Home</a></li>
+        <li><a href="app.ejs">Home</a></li>
         <li><a href="about.ejs">About</a></li>
-        <li><a href="products.ejs">Products</a></li>
+        <li><a class="active" href="products.ejs" id="prods">Products</a></li>
         <li><a href="contact.ejs">Contact us</a></li>
-        <li><a href="checkout.ejs">Checkout</a></li>
+        <li><a href="checkout.ejs" id="checkout">Checkout</a></li>
+        <li><a href="admin.ejs">Admin</a></li>
     </ul>
 
 
 </div>
-
-<p>products page
-
-needs to take all products from database and show the on the page - with images and lil descriptions
-
-
-</p>
-
+<div id="container">
+</div>
 </body>
 </html>

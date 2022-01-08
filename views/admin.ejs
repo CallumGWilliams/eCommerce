@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin - Martyn's Fencing</title>
+    <title>About us - Martyn's Fencing</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="https://cdn.socket.io/4.4.1/socket.io.min.js" integrity="sha384-fKnu0iswBIqkjxrhQCTZ7qlLHOFEgNkRmK2vaO/LbTZSXdJfAu6ewRBdwHPhBo/H" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="js/index.js"></script>
+    <link rel="shortcut icon" type="image/x-icon" href="img/favicon.ico">
+    <script src="//cdn.jsdelivr.net/npm/pouchdb@7.2.1/dist/pouchdb.min.js"></script>
+</head>
+<div class="header">
+    <p class="titleHeading">Martyn's Fencing Admin portal</p>
+
+
+
+    <ul class="nav">
+        <li><a  href="app.ejs">Home</a></li>
+        <li><a href="about.ejs">About</a></li>
+        <li><a href="products.ejs">Products</a></li>
+        <li><a href="contact.ejs">Contact us</a></li>
+        <li><a href="checkout.ejs">Checkout</a></li>
+        <li><a class="active" href="admin.ejs">Admin</a></li>
+    </ul>
+
+
+</div><br>
+<div id="login">
+
+<p>enter administrator login</p>
+    <input class="bigBox" type="text" placeholder="username" id="adminName">
+
+    <input class="bigBox" type="text" placeholder="password" id="adminPass"> <br>
+
+<button id="loginAdmin">Login</button>
+
+    <p id="loginRes"></p>
+
+</div>
+
+
+<div id="products">
+
+    <p>Add product</p><br>
+
+    <input class="bigBox" type="text" placeholder="product ID" id="prodId">
+
+    <input class="bigBox" type="text" placeholder="product name" id="productName">
+
+    <input class="bigBox" type="text" placeholder="size" id="size">
+
+    <input class="bigBox" type="number" placeholder = "price" id="price">
+
+    <input class="bigBox" type="number" placeholder ="price with Vat" id="priceVat">
+
+    <input class="bigBox" type="text" placeholder="image url" id="url">
+
+
+    <button id="addProduct">Add Product</button>
+    <button id="editProduct">Edit Product</button>
+    <button id="deleteProduct">Delete Product</button>
+    <button id="clearProducts">Clear all products</button>
+    <button id="displayProducts">Display Products</button>
+
+    <p id="createRes"></p>
+
+</div>
+
+
+
+
+</body>
+</html>

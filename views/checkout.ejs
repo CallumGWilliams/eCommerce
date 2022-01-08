@@ -5,36 +5,70 @@
     <title>Checkout - Martyn's Fencing</title>
     <link rel="stylesheet" href="css/styles.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="../App.js"></script>
+    <script src="../js/index.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/pouchdb@7.2.1/dist/pouchdb.min.js"></script>
     <link rel="shortcut icon" type="image/x-icon" href="img/favicon.ico">
+    <script src="https://cdn.socket.io/4.4.1/socket.io.min.js" integrity="sha384-fKnu0iswBIqkjxrhQCTZ7qlLHOFEgNkRmK2vaO/LbTZSXdJfAu6ewRBdwHPhBo/H" crossorigin="anonymous"></script>
+
 </head>
-<body>
+<body class="pageType">
 <div class="header">
     <p class="titleHeading">Martyn's Fencing Supplies and Installation</p>
 
     <ul class="nav">
-    <li><a class="active" href="app.ejs">Home</a></li>
+    <li><a href="app.ejs">Home</a></li>
     <li><a href="about.ejs">About</a></li>
     <li><a href="products.ejs">Products</a></li>
     <li><a href="contact.ejs">Contact us</a></li>
-    <li><a href="checkout.ejs">Checkout</a></li>
+    <li><a class="active" href="checkout.ejs">Checkout</a></li>
+        <li><a href="admin.ejs">Admin</a></li>
     </ul>
 
 
 
 </div>
 
-<p>
+<div id="container2">
+<div id="cartDiv" class="left">
+<div id ="headingCheckout">
+    <p>name</p>
+    <p>size</p>
+    <p>price</p>
 
-    will need a box that displays all items in cart
 
-    with option to remove
+</div>
 
-    also need to include payment stuff
+</div>
 
 
-</p>
+    <div class="rightWrap">
 
+<div id="infoDiv" class="rTop">
+
+    <input class="bigBox" type="text" placeholder="Name" id="name">
+    <input class="bigBox" type="text" placeholder="Number" id="number">
+    <input class="bigBox" type="text" placeholder="Email" id="email">
+    <input class="bigBox" type="text" placeholder="1st line address" id="address">
+    <input class="bigBox" type="text" placeholder="postal code" id="postcode">
+
+
+</div>
+
+    <div id="payDiv" class="rBottom">
+        <p>total:</p>
+        <p id="totalCost"></p><br>
+
+         <button id="checkOrder">order</button>
+        <button id="cancelOrder">cancel</button>
+
+    </div>
+    </div>
+
+</div>
+
+<div class="resultDiv">
+    <p id="resP"></p>
+</div>
 
 </body>
 </html>
