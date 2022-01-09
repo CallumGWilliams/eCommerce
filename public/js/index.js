@@ -141,7 +141,6 @@ $("#addBtn" + i).click(function () {
 
    //get the current selected size
     //get the corresponding object
-
     numerator = this.id.slice(-1);
 
     let n = ($("#p" + numerator).text());
@@ -153,21 +152,27 @@ $("#addBtn" + i).click(function () {
 
 
     db.get(numerator).then(function (doc) {
-num++;
+
         let newCartProd = {
 
-            "_id":num + "id",
+            "_id":num + "id" + Math.floor(Math.random() * 100),
             "name": doc.name,
             "size":doc.size,
             "price":doc.price
         }
+        num++;
+        console.log(newCartProd._id);
+        try {
+            cart.put(newCartProd).then(function (doc){
 
-        cart.put(newCartProd).then(function (doc) {
+            });
 
+        }
+        catch (err){
+            console.log(err);
+        }
 
-        });
-
-
+$("#resP2").text( doc.name+" added to cart!");
 
 
         //onload of checkout page add (CART) array to page
@@ -460,6 +465,7 @@ $("#resP").text("Cart cannot empty");
                     $("#resP").text("user details cannot be empty");
 
 
+
                  })
 
 
@@ -500,16 +506,6 @@ socket.on("gotConnection", (res) => {
     $dov.append($("<p></p>", {id:"connectCount"}).text(res.num + " user(s) connected!"))
 
     $("body").append($dov);
-
-    })
-
-    suite("hello", function () {
-
-
-        test("hello", function () {
-
-            console.log("o");
-        })
 
     })
 
