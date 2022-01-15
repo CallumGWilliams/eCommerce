@@ -8,22 +8,55 @@ $(function () {
     let num = 0;
 let users = new PouchDB("users");
 let xn = 0;
+    let myIndex = 0;
+
+    if ($("body").is(".on")) {
+
+
+        carousel();
+    }
+
+    //home page image slideshow
+    function carousel() {
+        var i;
+        var x = document.getElementsByClassName("mySlides");
+        for (i = 0; i < x.length; i++) {
+            x[i].style.display = "none";
+        }
+        myIndex++;
+        if (myIndex > x.length) {
+            myIndex = 1
+        }
+        x[myIndex - 1].style.display = "block";
+        setTimeout(carousel, 2000); // Change image every 2 seconds
+    }
+
+    $("#leftIB").click(function () {
+
+location.href="products.ejs";
+
+        //navigate to products
+    })
 
 
 
 
+
+
+function displayProds (db){
+
+    db.allDocs({
+        include_docs: true,
+        attachments: true
+    }).then(function (result) {
+        // handle result
+        console.log(result);
+        Promise.resolve(result);
+})};
 
     $("#displayProducts").click(function () {
-        db.allDocs({
-            include_docs: true,
-            attachments: true
-        }).then(function (result) {
-            // handle result
-            console.log(result);
-            $("#productsList").append(result);
-
-
-        })});
+    console.log(displayProds(db));
+    });
 
     db.allDocs({
         include_docs: true,
@@ -104,22 +137,26 @@ $("#deleteProduct").click(function () {
 });
 
         for (i = 0; i < result.rows.length; i++) {
+        //creation of products
+
 
             if (document.getElementById(result.rows[i].doc.name) === null) {
+                //check to ensure the box for that category has not been created already
+
                 let $div = $("<div>", {id: result.rows[i].doc.name, class: "gallery"});
 
 
                 let $p = $("<p></p>", {id: "p" + i, class: "prodTitle"}).text(result.rows[i].doc.name);
 
 
-                let $u = $("<img></img>", {id: "img" + i, src: root + result.rows[i].doc.url});
+                let $u = $("<img></img>", {id: "img" + i, src: root + result.rows[i].doc.url, class:"prodImg"});
 
 
                 $s = $("<select></select>", {name: "size", id: "sizes"+i});
 
 
 
-                $o = $("<option>").val(result.rows[i].doc.name + result.rows[i].doc.size).text(result.rows[i].doc.size);
+                $o = $("<option>").val(result.rows[i].id).text(result.rows[i].doc.size);
 
 
                 let $b = $('<input type="button" value="Add to cart" id="k" />');
@@ -146,12 +183,14 @@ $("#addBtn" + i).click(function () {
     let n = ($("#p" + numerator).text());
     let c = $("#sizes" + numerator);
     let e = c.find(":selected").text();
-
+    let f = c.find(":selected").val();
+    console.log(f);
 
     let r = n + e;
 
+    console.log(r);
 
-    db.get(numerator).then(function (doc) {
+    db.get(f).then(function (doc) {
 
         let newCartProd = {
 
@@ -175,7 +214,6 @@ $("#addBtn" + i).click(function () {
 $("#resP2").text( doc.name+" added to cart!");
 
 
-        //onload of checkout page add (CART) array to page
     }).catch(function (err) {
         console.log(err);
 
@@ -197,8 +235,9 @@ let n = $div.children[0].id.slice(-1);
 
                 $s = document.getElementById("sizes"+n);
                 $div.append($s);
-               // $("#container").append($div);
-                $s.add(new Option(result.rows[i].doc.size,result.rows[i].doc.name + result.rows[i].doc.size ))
+
+                $s.add(new Option(result.rows[i].doc.size,result.rows[i].id))
+
             }
 
         }
@@ -262,9 +301,6 @@ let n = $div.children[0].id.slice(-1);
     let id = 0;
 
     $("#addProduct").click(function () {
-
-
-        //  if ($("#prodId").val().length > 0 + $("#productName").val().length > 0 +  $("#size").val().length > 0){
 
 
         if ($("#prodId").val().length > 0 && $("#productName").val().length > 0
@@ -369,8 +405,6 @@ t += parseInt(result.rows[i].doc.price);
 
 
             $("#checkOrder").click(function () {
-
-                //turn a socket on - send every bit of info to the server
 
 
                 if ( $("#name").val().length > 0 && $("#number").val().length > 0 && $("#email").val().length
@@ -493,7 +527,9 @@ if (document.getElementById("orderDiv") === null){
         $div.append($("<p></p>", {id: "notify"}).text("ONE USER JUST ORDERED A PRODUCT"));
 
         $(".header").prepend($div);
+
 }
+    console.log(order);
     })
 
 socket.emit("connected");
@@ -509,8 +545,12 @@ socket.on("gotConnection", (res) => {
 
     })
 
-
-
 });
+
+
+
+
+
+
 
 
